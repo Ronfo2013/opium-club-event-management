@@ -1,0 +1,99 @@
+version: '3.8'
+
+services:
+  # Simula Cloud Run - PHP Backend
+  cloudrun-simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile.cloudrun
+    container_name: opium-cloudrun-sim
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:8080"  # Cloud Run usa porta 8080
+    environment:
+      # Simula variabili Cloud Run
+      - PORT=8080
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - DB_CONNECTION=mysql
+      - DB_HOST=cloudsql-mysql
+      - DB_PORT=3306
+      - DB_DATABASE=opium_events
+      - DB_USERNAME=root
+      - DB_PASSWORD=docker_password
+      - REDIS_HOST=cloudsql-redis
+      - REDIS_PORT=6379
+      - MAIL_MAILER=smtp
+      - MAIL_HOST=smtp.ionos.it
+      - MAIL_PORT=587
+      - MAIL_USERNAME=info@opiumpordenone.com
+      - MAIL_PASSWORD=Camilla2020@
+      - MAIL_ENCRYPTION=tls
+      - GOOGLE_CLOUD_PROJECT_ID=premium-origin-471808-u0
+      - GOOGLE_CLOUD_STORAGE_BUCKET=opium-tickets-bucket
+      - ADMIN_EMAIL=admin@opiumpordenone.com
+      - ADMIN_PASSWORD=Cami
+      # Cloud Run specific
+      - K_SERVICE=default
+      - K_REVISION=1
+      - K_CONFIGURATION=default
+    depends_on:
+      - cloudsql-mysql
+      - cloudsql-redis
+    networks:
+      - cloudrun-network
+
+  # Simula Cloud SQL MySQL
+  cloudsql-mysql:
+    image: mysql:8.0
+    container_name: opium-cloudsql-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: opium_events
+      MYSQL_ROOT_PASSWORD: docker_password
+      MYSQL_USER: opium_user
+      MYSQL_PASSWORD: opium_password
+    volumes:
+      - cloudsql_mysql_data:/var/lib/mysql
+      - ./docker-init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3307:3306"  # Porta diversa per evitare conflitti
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - cloudrun-network
+
+  # Simula Cloud Memorystore Redis
+  cloudsql-redis:
+    image: redis:7-alpine
+    container_name: opium-cloudsql-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"  # Porta diversa per evitare conflitti
+    volumes:
+      - cloudsql_redis_data:/data
+    networks:
+      - cloudrun-network
+
+  # Simula Cloud SQL Proxy (per test connessione)
+  cloudsql-proxy:
+    image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.0.0
+    container_name: opium-cloudsql-proxy
+    restart: unless-stopped
+    command: ["/cloud-sql-proxy", "--address", "0.0.0.0", "--port", "5432", "premium-origin-471808-u0:us-central1:opium-db"]
+    ports:
+      - "5432:5432"
+    networks:
+      - cloudrun-network
+
+volumes:
+  cloudsql_mysql_data:
+    driver: local
+  cloudsql_redis_data:
+    driver: local
+
+networks:
+  cloudrun-network:
+    driver: bridge
