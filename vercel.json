@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "react-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/react-frontend/build/$1"
+    }
+  ],
+  "env": {
+    "REACT_APP_API_URL": "https://premium-origin-471808-u0.appspot.com/api/v1"
+  }
+}
