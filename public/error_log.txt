@@ -1,0 +1,60 @@
+[26-Sep-2025 11:10:15 UTC] [DEBUG] Table sizes query result: [{"table_name":"utenti","size_mb":"0.13"},{"table_name":"birthday_sent","size_mb":"0.08"},{"table_name":"email_texts","size_mb":"0.05"},{"table_name":"events","size_mb":"0.05"},{"table_name":"birthday_assets","size_mb":"0.03"},{"table_name":"birthday_templates","size_mb":"0.03"},{"table_name":"submissions","size_mb":"0.02"}]
+[26-Sep-2025 11:10:35 UTC] [DEBUG] Table sizes query result: [{"table_name":"utenti","size_mb":"0.13"},{"table_name":"birthday_sent","size_mb":"0.08"},{"table_name":"email_texts","size_mb":"0.05"},{"table_name":"events","size_mb":"0.05"},{"table_name":"birthday_assets","size_mb":"0.03"},{"table_name":"birthday_templates","size_mb":"0.03"},{"table_name":"submissions","size_mb":"0.02"}]
+[26-Sep-2025 14:31:50 UTC] [DEBUG] Table sizes query result: [{"table_name":"utenti","size_mb":"0.13"},{"table_name":"birthday_sent","size_mb":"0.08"},{"table_name":"email_texts","size_mb":"0.05"},{"table_name":"events","size_mb":"0.05"},{"table_name":"birthday_assets","size_mb":"0.03"},{"table_name":"birthday_templates","size_mb":"0.03"},{"table_name":"submissions","size_mb":"0.02"}]
+[29-Sep-2025 07:42:35 UTC] Database connection failed: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo for db failed: nodename nor servname provided, or not known
+[29-Sep-2025 13:08:31 UTC] PHP Warning:  require_once(/var/www/html/public/../src/bootstrap.php): Failed to open stream: No such file or directory in /var/www/html/public/index.php on line 15
+[29-Sep-2025 13:08:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/var/www/html/public/../src/bootstrap.php' (include_path='.:/usr/local/lib/php') in /var/www/html/public/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/public/index.php on line 15
+[29-Sep-2025 13:08:41 UTC] PHP Warning:  require_once(/var/www/html/public/../src/bootstrap.php): Failed to open stream: No such file or directory in /var/www/html/public/index.php on line 15
+[29-Sep-2025 13:08:41 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/var/www/html/public/../src/bootstrap.php' (include_path='.:/usr/local/lib/php') in /var/www/html/public/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/public/index.php on line 15
+[29-Sep-2025 13:18:40 UTC] PHP Fatal error:  Uncaught Error: Class "App\Controllers\AuthController" not found in /var/www/html/public/index.php:84
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/public/index.php on line 84
+[29-Sep-2025 13:24:20 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/api/events.php on line 15
+[29-Sep-2025 13:24:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /var/www/html/public/api/events.php:19
+Stack trace:
+#0 /var/www/html/public/index.php(95): require()
+#1 {main}
+  thrown in /var/www/html/public/api/events.php on line 19
+[29-Sep-2025 15:00:34 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:00:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:00:37 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:00:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:03:21 UTC] PHP Warning:  require_once(/var/www/html/public/api/../src/bootstrap.php): Failed to open stream: No such file or directory in /var/www/html/public/api/events.php on line 12
+[29-Sep-2025 15:03:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/var/www/html/public/api/../src/bootstrap.php' (include_path='.:/usr/local/lib/php') in /var/www/html/public/api/events.php:12
+Stack trace:
+#0 /var/www/html/public/index.php(95): require()
+#1 {main}
+  thrown in /var/www/html/public/api/events.php on line 12
+[29-Sep-2025 15:09:59 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:09:59 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:10:02 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:10:02 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:10:04 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:10:04 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:10:06 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[29-Sep-2025 15:10:06 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:30:31 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:30:31 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:30:49 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:30:49 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:31:09 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:31:09 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:32:13 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:32:13 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:32:15 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:32:15 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:33:22 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:33:22 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:33:26 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:33:26 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:51:02 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:51:02 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:51:47 UTC] PHP Warning:  Trying to access array offset on value of type bool in /var/www/html/public/login.php on line 37
+[30-Sep-2025 07:51:47 UTC] PHP Warning:  Trying to access array offset on value of type null in /var/www/html/public/login.php on line 37

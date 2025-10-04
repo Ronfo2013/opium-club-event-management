@@ -1,0 +1,145 @@
+runtime: php82
+
+# Environment variables
+env_variables:
+  # Database configuration (Cloud SQL Socket)
+  DB_CONNECTION: "mysql"
+  DB_HOST: "/cloudsql/premium-origin-471808-u0:us-central1:opium-db"
+  DB_NAME: "opium_events"
+  DB_USER: "root"
+  DB_PASSWORD: "Camilla"
+  DB_PORT: "3306"
+  
+  # Email configuration
+  MAIL_MAILER: "smtp"
+  MAIL_HOST: "smtp.ionos.it"
+  MAIL_USERNAME: "info@opiumpordenone.com"
+  MAIL_PASSWORD: "Camilla2020@"
+  MAIL_PORT: "587"
+  MAIL_ENCRYPTION: "tls"
+  MAIL_FROM_ADDRESS: "info@opiumpordenone.com"
+  MAIL_FROM_NAME: "Opium Club Event Management"
+  
+  # App configuration
+  APP_ENV: "production"
+  APP_DEBUG: "false"
+  APP_KEY: "base64:YOUR_APP_KEY_HERE"
+  APP_URL: "https://your-project-id.appspot.com"
+  
+  # Admin configuration
+  ADMIN_EMAIL: "admin@opiumpordenone.com"
+  ADMIN_PASSWORD: "Cami"
+  
+  # Cloud Storage bucket
+  GOOGLE_CLOUD_PROJECT_ID: "premium-origin-471808-u0"
+  GOOGLE_CLOUD_STORAGE_BUCKET: "opium-tickets-bucket"
+  
+  # Cache and Session
+  CACHE_DRIVER: "redis"
+  SESSION_DRIVER: "redis"
+  REDIS_HOST: "127.0.0.1"
+  REDIS_PORT: "6379"
+  
+  # Queue
+  QUEUE_CONNECTION: "redis"
+  
+  # QR Code configuration
+  QR_CODE_SIZE: "300"
+  QR_CODE_MARGIN: "1"
+  
+  # PDF configuration
+  PDF_ORIENTATION: "portrait"
+  PDF_PAGE_SIZE: "A4"
+
+# Static files handling
+handlers:
+  # Service Worker
+  - url: /sw.js
+    static_files: public/sw.js
+    upload: public/sw\.js
+    mime_type: application/javascript
+
+  # JavaScript files
+  - url: /(.*\.js)
+    static_files: public/\1
+    upload: public/.*\.js$
+    mime_type: application/javascript
+
+  # CSS files
+  - url: /(.*\.css)
+    static_files: public/\1
+    upload: public/.*\.css$
+    mime_type: text/css
+
+  # Image files
+  - url: /(.*\.(png|jpg|jpeg|gif|ico|svg|webp))
+    static_files: public/\1
+    upload: public/.*\.(png|jpg|jpeg|gif|ico|svg|webp)$
+
+  # JSON files
+  - url: /(.*\.json)
+    static_files: public/\1
+    upload: public/.*\.json$
+    mime_type: application/json
+
+  # HTML files
+  - url: /(.*\.html)
+    static_files: public/\1
+    upload: public/.*\.html$
+    mime_type: text/html
+
+  # Serve static directories
+  - url: /assets
+    static_dir: public/assets
+    
+  - url: /uploads
+    static_dir: public/uploads
+    
+  - url: /qrcodes
+    static_dir: public/qrcodes
+    
+  - url: /generated_images
+    static_dir: public/generated_images
+    
+  - url: /generated_pdfs
+    static_dir: public/generated_pdfs
+
+  # PHP application
+  - url: /.*
+    script: auto
+
+# Automatic scaling
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  target_cpu_utilization: 0.6
+  target_throughput_utilization: 0.6
+
+# Health checks
+readiness_check:
+  path: "/api/v1/health"
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+
+liveness_check:
+  path: "/api/v1/health"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+
+# Network settings
+network:
+  session_affinity: true
+
+# Beta settings for PHP 8.2 and Cloud SQL
+beta_settings:
+  cloud_sql_instances: "premium-origin-471808-u0:us-central1:opium-db"
+
+
+
+
+
+

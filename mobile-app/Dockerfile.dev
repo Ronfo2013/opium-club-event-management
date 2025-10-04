@@ -1,0 +1,31 @@
+FROM node:18-alpine
+
+# Installa le dipendenze necessarie per React Native
+RUN apk add --no-cache \
+    git \
+    curl \
+    bash \
+    openjdk11 \
+    android-tools
+
+# Imposta le variabili d'ambiente per Android
+ENV ANDROID_HOME=/opt/android-sdk
+ENV PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# Crea la directory di lavoro
+WORKDIR /app
+
+# Copia i file di dipendenze
+COPY package*.json ./
+
+# Installa le dipendenze
+RUN npm install
+
+# Copia il resto del codice
+COPY . .
+
+# Espone le porte per Metro bundler e Expo
+EXPOSE 8081 19000 19001 19002
+
+# Comando di avvio per lo sviluppo
+CMD ["npm", "start"]

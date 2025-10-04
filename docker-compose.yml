@@ -1,0 +1,154 @@
+services:
+  # PHP Backend
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: opium-php-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+      - ./public:/var/www/html/public
+    ports:
+      - "8000:80"
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=opium_events
+      - DB_USERNAME=root
+      - DB_PASSWORD=docker_password
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MAIL_MAILER=smtp
+      - MAIL_HOST=smtp.ionos.it
+      - MAIL_PORT=587
+      - MAIL_USERNAME=info@opiumpordenone.com
+      - MAIL_PASSWORD=Camilla2020@
+      - MAIL_ENCRYPTION=tls
+      # Variabili per il sistema PHP tradizionale
+      - SMTP_HOST=smtp.ionos.it
+      - SMTP_USER=info@opiumpordenone.com
+      - SMTP_PASS=Camilla2020@
+      - SMTP_PORT=587
+      - SMTP_ENCRYPTION=tls
+      - ADMIN_PASSWORD=Cami
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - opium-network
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./react-frontend
+      dockerfile: Dockerfile
+    container_name: opium-react-frontend
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./react-frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000/api/v1
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - app
+    networks:
+      - opium-network
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: opium-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: opium_events
+      MYSQL_ROOT_PASSWORD: docker_password
+      MYSQL_USER: opium_user
+      MYSQL_PASSWORD: opium_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker-init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - opium-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: opium-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - opium-network
+
+  # PHPMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: opium-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: docker_password
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - opium-network
+
+  # Mailhog (for email testing)
+  mailhog:
+    image: mailhog/mailhog
+    container_name: opium-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    networks:
+      - opium-network
+
+  # Mobile App Development Server
+  mobile-dev:
+    build:
+      context: ./mobile-app
+      dockerfile: Dockerfile.dev
+    container_name: opium-mobile-dev
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./mobile-app:/app
+      - /app/node_modules
+    ports:
+      - "8081:8081"  # Metro bundler
+      - "19000:19000"  # Expo dev tools
+      - "19001:19001"  # Expo dev tools
+      - "19002:19002"  # Expo dev tools
+    environment:
+      - REACT_NATIVE_PACKAGER_HOSTNAME=0.0.0.0
+      - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
+    networks:
+      - opium-network
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  opium-network:
+    driver: bridge

@@ -1,0 +1,72 @@
+# Google Cloud ignore file
+# File da escludere dal deployment
+
+# File temporanei
+temp_*.png
+output_*.png
+*.tmp
+*.cache
+
+# File sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# File di debug
+php_output_debug.txt
+debug_resend.txt
+log_rinviati.txt
+error_log.txt
+
+# File di sviluppo
+*.log
+*.pid
+*.lock
+
+# Directory temporanee
+generated_images/temp_*
+qrcodes/qr_*_old_*
+
+# File di backup
+*.bak
+*.backup
+*_backup.*
+
+# File IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# File OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# File di test
+test_*.php
+*_test.php
+test/
+tests/
+
+# File di pulizia (non necessari in produzione)
+cleanup_*.php
+force_cleanup.php
+
+# File di configurazione locale
+.env
+.env.local
+config_local.php
+
+# File di documentazione (opzionale)
+*.md
+docs/
+documentation/
+
+# File di sviluppo
+deploy.sh
+database_migration.sql
+GCLOUD_DEPLOYMENT.md
+REPORT_CACHE.md
+PULIZIA_PROGETTO.md
+

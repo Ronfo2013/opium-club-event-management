@@ -1,0 +1,72 @@
+{
+  "short_name": "Opium Club",
+  "name": "Opium Club Event Management",
+  "description": "Sistema di gestione eventi per Opium Club Pordenone",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1f2937",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "it",
+  "categories": ["entertainment", "lifestyle", "social"],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot2.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Registra Evento",
+      "short_name": "Registra",
+      "description": "Registrati a un evento",
+      "url": "/",
+      "icons": [
+        {
+          "src": "shortcut-register.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Admin Panel",
+      "short_name": "Admin",
+      "description": "Accedi al pannello amministrativo",
+      "url": "/login",
+      "icons": [
+        {
+          "src": "shortcut-admin.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

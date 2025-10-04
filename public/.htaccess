@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# CORS Headers per permettere accesso alle immagini dal frontend React
+<IfModule mod_headers.c>
+    # Abilita CORS per tutte le richieste
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    Header always set Access-Control-Max-Age "3600"
+    
+    # Gestisci preflight requests
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
+
+# Reindirizza admin.php e login.php alle route moderne (mantiene metodo con 307 lato PHP)
+RewriteRule ^admin\.php$ /admin [L]
+RewriteRule ^login\.php$ /login [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

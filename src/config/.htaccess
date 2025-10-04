@@ -1,0 +1,8 @@
+﻿<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /src/config/
+
+    # Blocca l'accesso diretto via browser ai file .php in questa cartella
+    RewriteCond %{REQUEST_URI} \.php$
+    RewriteRule ^ - [F,L]
+</IfModule>

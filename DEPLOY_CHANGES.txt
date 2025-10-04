@@ -1,0 +1,34 @@
+MODIFICHE IMPLEMENTATE - 2025-09-25 15:37
+
+File modificati per risolvere errori ricerca utenti:
+
+1. public/admin.php
+   - Aggiunto debug logging dettagliato
+   - Impostato URL AJAX corretto: /ajax_search_users.php
+   - Risolto errore HTTP 404
+
+2. public/admin_scripts.js  
+   - Migliorato rilevamento tab "Ricerca Utenti"
+   - Aggiunta logica multi-condizione per rilevamento stato tab
+   - Risolto errore inizializzazione cache
+
+3. public/ajax_search_users.php
+   - Aggiornato header commento
+   - Confermata struttura corretta
+
+4. public/index.php (ROUTING SYSTEM)
+   - AGGIUNTA ROTTA: /ajax_search_users.php → public/ajax_search_users.php
+   - Risolto problema 404: il file non era mappato nel router
+
+5. public/ajax_search_users.php (FIX ERRORE 500)
+   - Aggiunto rilevamento automatico ambiente produzione vs locale
+   - Risolto errore database: ora usa bootstrap Google Cloud in produzione
+   - Aggiunto debug logging esteso e gestione errori dettagliata
+
+PROBLEMI RISOLTI:
+- ❌ Errore cache ricerca: "Nessuna riga utente trovata per inizializzare la cache"
+- ❌ Errore HTTP 404 nella ricerca AJAX
+- ✅ Sistema ora rileva correttamente quando siamo nella tab ricerca utenti
+- ✅ Debug logging implementato per troubleshooting
+
+DEPLOY: Richiesto aggiornamento immediato per applicare le correzioni.

@@ -1,0 +1,9 @@
+﻿{
+  "name": "MrCharlie Eventi",
+  "short_name": "MrCharlie",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#579aff",
+  "theme_color": "#579aff",
+  "description": "Richiedi ingressi omaggio e gestisci eventi MrCharlie."
+}

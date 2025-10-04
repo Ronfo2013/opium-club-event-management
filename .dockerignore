@@ -1,0 +1,54 @@
+# File e directory da escludere dal build Docker
+# Questo rende il build più veloce e l'immagine più leggera
+
+# Dependency directories
+vendor/
+node_modules/
+
+# Log files
+logs/
+*.log
+
+# Environment files (verranno gestiti da docker-compose)
+.env*
+env.*
+
+# Cache directories
+lib/phpqrcode/cache/
+
+# Generated files (verranno creati nei volumi)
+public/uploads/
+public/qrcodes/
+public/generated_images/
+public/generated_pdfs/
+
+# Development files
+.git/
+.gitignore
+README*.md
+*.md
+DEPLOY_CHANGES.txt
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup files
+*.bak
+*_bak
+
+# Docker files (non necessari nell'immagine)
+Dockerfile
+docker-compose.yml
+.dockerignore

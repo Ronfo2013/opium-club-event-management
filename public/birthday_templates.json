@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Template Default MrCharlie",
+        "subject": "🎉 Buon Compleanno da MrCharlie! 🎂",
+        "filename": "template_default.json",
+        "is_active": true,
+        "times_used": 15,
+        "created_at": "2024-01-01 10:00:00",
+        "updated_at": "2024-06-20 15:30:00"
+    },
+    {
+        "id": 2,
+        "name": "Template Elegante",
+        "subject": "🌟 Auguri di compleanno {{NOME}} - MrCharlie",
+        "filename": "template_elegant.json",
+        "is_active": false,
+        "times_used": 8,
+        "created_at": "2024-01-15 14:30:00",
+        "updated_at": "2024-02-10 09:15:00"
+    },
+    {
+        "id": 3,
+        "name": "Template Moderno",
+        "subject": "🎂 {{NOME}}, oggi è il tuo giorno speciale! ✨",
+        "filename": "template_modern.json",
+        "is_active": false,
+        "times_used": 3,
+        "created_at": "2024-02-01 09:15:00",
+        "updated_at": "2024-03-05 16:45:00"
+    }
+] 
