@@ -41,7 +41,7 @@ Sistema di gestione eventi con generazione automatica di QR code per Opium Club 
 
 ### 1. Clona il repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/Ronfo2013/opium-club-event-management.git
 cd opium-club-event-management
 ```
 
@@ -299,9 +299,3 @@ Questo progetto è proprietario di Opium Club Pordenone.
 ---
 
 **Sviluppato con ❤️ da Benhanced per Opium Club Pordenone**
-
-
-
-
-
-
